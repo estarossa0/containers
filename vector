@@ -1,5 +1,7 @@
 #include <memory>
 
+namespace ft
+{
 template<typename T>
 class vector
 {
@@ -75,4 +77,5 @@ public:
 	void							resize(size_type sz, const value_type& c);
 
 	void							swap(vector& other);
+}
 }
