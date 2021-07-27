@@ -1,0 +1,47 @@
+#pragma once
+
+#include "vector"
+namespace ft
+{
+template<typename dataType>
+class randomAccessIterator
+{
+protected:
+	dataType* _data;
+	template<class T>
+	friend		class vector;
+public:
+	typedef ptrdiff_t				difference_type;
+	typedef dataType				value_type;
+	typedef dataType*				pointer;
+	typedef dataType&				reference;
+	typedef randomAccessIterator	iterator_category;
+
+	randomAccessIterator();
+	randomAccessIterator(randomAccessIterator const &);
+	~randomAccessIterator();
+
+	randomAccessIterator&	operator=(randomAccessIterator const &);
+	randomAccessIterator&	operator++();
+	randomAccessIterator	operator++(int);
+	randomAccessIterator&	operator--();
+	randomAccessIterator	operator--(int);
+	reference				operator*();
+	pointer					operator->();
+	bool					operator==(randomAccessIterator const &);
+	bool					operator>(randomAccessIterator const &);
+	bool					operator<(randomAccessIterator const &);
+	bool					operator>=(randomAccessIterator const &);
+	bool					operator<=(randomAccessIterator const &);
+	bool					operator!=(randomAccessIterator const &);
+	randomAccessIterator	operator+(difference_type);
+	friend
+	randomAccessIterator	operator+(difference_type, const randomAccessIterator&);
+	randomAccessIterator	operator-(difference_type);
+	friend
+	randomAccessIterator	operator-(difference_type, const randomAccessIterator&);
+	randomAccessIterator&	operator+=(difference_type);
+	randomAccessIterator&	operator-=(difference_type);
+	randomAccessIterator&	operator[](int);
+};
+}
