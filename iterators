@@ -38,6 +38,6 @@ public:
 	randomAccessIterator	operator-(difference_type);
 	randomAccessIterator&	operator+=(difference_type);
 	randomAccessIterator&	operator-=(difference_type);
-	randomAccessIterator&	operator[](int);
+	reference				operator[](difference_type);
 };
 }
