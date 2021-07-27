@@ -35,11 +35,7 @@ public:
 	bool					operator<=(randomAccessIterator const &);
 	bool					operator!=(randomAccessIterator const &);
 	randomAccessIterator	operator+(difference_type);
-	friend
-	randomAccessIterator	operator+(difference_type, const randomAccessIterator&);
 	randomAccessIterator	operator-(difference_type);
-	friend
-	randomAccessIterator	operator-(difference_type, const randomAccessIterator&);
 	randomAccessIterator&	operator+=(difference_type);
 	randomAccessIterator&	operator-=(difference_type);
 	randomAccessIterator&	operator[](int);
