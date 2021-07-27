@@ -40,4 +40,139 @@ public:
 	randomAccessIterator&	operator-=(difference_type);
 	reference				operator[](difference_type);
 };
+
+template<typename dataType>
+randomAccessIterator<dataType>::randomAccessIterator() : _data(nullptr) {}
+
+template<typename dataType>
+randomAccessIterator<dataType>::randomAccessIterator(randomAccessIterator const &other) : _data(other._data) {}
+
+template<typename dataType>
+randomAccessIterator<dataType>::~randomAccessIterator() {}
+
+template<typename dataType>
+randomAccessIterator<dataType>&	randomAccessIterator<dataType>::operator=(randomAccessIterator<dataType> const &other) {
+	this->_data = other._data;
+	return *this;
+}
+
+template<typename dataType>
+randomAccessIterator<dataType>&	randomAccessIterator<dataType>::operator++() {
+	this->_data++;
+	return *this;
+}
+
+template<typename dataType>
+randomAccessIterator<dataType>	randomAccessIterator<dataType>::operator++(int) {
+	randomAccessIterator<dataType> tmp(*this);
+
+	this->_data++;
+	return tmp;
+}
+
+template<typename dataType>
+randomAccessIterator<dataType>&	randomAccessIterator<dataType>::operator--() {
+	this->_data--;
+	return *this;
+}
+
+template<typename dataType>
+randomAccessIterator<dataType>	randomAccessIterator<dataType>::operator--(int) {
+	randomAccessIterator<dataType> tmp(*this);
+
+	this->_data--;
+	return tmp;
+}
+
+template<typename dataType>
+typename randomAccessIterator<dataType>::reference	randomAccessIterator<dataType>::operator*() {
+	return *_data;
+}
+
+template<typename dataType>
+typename randomAccessIterator<dataType>::pointer	randomAccessIterator<dataType>::operator->() {
+	return this;
+}
+
+template<typename dataType>
+bool							randomAccessIterator<dataType>::operator==(randomAccessIterator<dataType> const &other) {
+	return (this->_data == other._data);
+}
+
+template<typename dataType>
+bool							randomAccessIterator<dataType>::operator>(randomAccessIterator<dataType> const &other) {
+	return (this->_data > other._data);
+}
+
+template<typename dataType>
+bool							randomAccessIterator<dataType>::operator<(randomAccessIterator<dataType> const &other) {
+	return (this->_data < other._data);
+}
+
+template<typename dataType>
+bool							randomAccessIterator<dataType>::operator>=(randomAccessIterator<dataType> const &other) {
+	return (this->_data >= other._data);
+}
+
+template<typename dataType>
+bool							randomAccessIterator<dataType>::operator<=(randomAccessIterator<dataType> const &other) {
+	return (this->_data <= other._data);
+}
+
+template<typename dataType>
+bool							randomAccessIterator<dataType>::operator!=(randomAccessIterator<dataType> const &other) {
+	return (this->_data != other._data);
+}
+
+template<typename dataType>
+randomAccessIterator<dataType>	randomAccessIterator<dataType>::operator+(randomAccessIterator<dataType>::difference_type n) {
+	randomAccessIterator<dataType> tmp(*this);
+
+	tmp += n;
+	return tmp;
+}
+
+template<typename dataType>
+randomAccessIterator<dataType>	operator+(typename randomAccessIterator<dataType>::difference_type n, randomAccessIterator<dataType> const &other) {
+	randomAccessIterator<dataType> tmp(other);
+
+	tmp += n;
+	return tmp;
+}
+
+template<typename dataType>
+randomAccessIterator<dataType>	randomAccessIterator<dataType>::operator-(randomAccessIterator<dataType>::difference_type n) {
+	randomAccessIterator<dataType> tmp(*this);
+
+	tmp -= n;
+	return tmp;
+}
+
+template<typename dataType>
+randomAccessIterator<dataType>	operator-(typename randomAccessIterator<dataType>::difference_type n, randomAccessIterator<dataType> const &other) {
+	randomAccessIterator<dataType> tmp(other);
+
+	tmp -= n;
+	return tmp;
+}
+
+template<typename dataType>
+randomAccessIterator<dataType>&	randomAccessIterator<dataType>::operator+=(randomAccessIterator<dataType>::difference_type n) {
+
+	this->_data += n;
+	return *this;
+}
+
+template<typename dataType>
+randomAccessIterator<dataType>&	randomAccessIterator<dataType>::operator-=(randomAccessIterator<dataType>::difference_type n) {
+
+	this->_data -= n;
+	return *this;
+}
+
+template<typename dataType>
+typename randomAccessIterator<dataType>::reference	randomAccessIterator<dataType>::operator[](randomAccessIterator<dataType>::difference_type n) {
+	randomAccessIterator<dataType> tmp(*this);
+	return *(tmp + n);
+}
 }
